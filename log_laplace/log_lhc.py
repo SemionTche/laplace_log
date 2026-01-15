@@ -18,7 +18,7 @@ class LoggerLHC:
         """
         self.app_name = app_name
         self.mode = mode
-        self.log_root = Path(log_root or Path.cwd()) / "log"
+        self.log_root = Path(log_root or Path.cwd()) / "logs"
         self.date_folder = self.log_root / date.today().isoformat()
         self.date_folder.mkdir(parents=True, exist_ok=True)
 
