@@ -29,13 +29,11 @@ No magic, no external dependencies — just structured, predictable logging.
 
 ## Installation
 
-Copy the `laplace_log` folder into your project or install it as a local package.
+Install with pip:
 
 ```bash
-pip install -e .
+pip install laplace-log
 ```
-
-(or vendor it directly if you prefer)
 
 ---
 
@@ -198,7 +196,7 @@ It is a **thin, explicit convenience layer**.
 
 ## License
 
-(to be decided)
+ GPL-3.0 license
 
 ---
 
