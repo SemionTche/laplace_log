@@ -10,14 +10,10 @@ This module is not intended to be used directly by applications.
 '''
 # libraries
 import sys
-from typing import Optional
-
-# project
-from .log_lhc import LoggerLHC
 
 
 # singleton instance (app logger)
-_logger_instance:  Optional[LoggerLHC] = None
+_logger_instance = None
 
 def set_logger_instance(logger):
     '''set the app logger'''
