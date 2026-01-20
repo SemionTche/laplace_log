@@ -1,9 +1,23 @@
+'''
+Internal utilities for laplace_log.
+
+This module contains:
+- the singleton logger instance
+- helper classes for simplified logging calls
+- stream redirection utilities for print() capture
+
+This module is not intended to be used directly by applications.
+'''
 # libraries
 import sys
+from typing import Optional
+
+# project
+from .log_lhc import LoggerLHC
 
 
 # singleton instance (app logger)
-_logger_instance = None
+_logger_instance:  Optional[LoggerLHC] = None
 
 def set_logger_instance(logger):
     '''set the app logger'''

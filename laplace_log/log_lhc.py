@@ -1,3 +1,19 @@
+'''
+Core logging backend for laplace_log.
+
+This module defines the LoggerLHC class, which:
+- configures the root logger
+- installs file and console handlers
+- captures print() output
+- exposes an application-level logger
+
+Typical usage:
+    from laplace_log import LoggerLHC, log
+
+    LoggerLHC("laplace.opt")
+    log.info("Application started")
+'''
+
 # libraries
 import logging
 from pathlib import Path
@@ -6,7 +22,7 @@ import sys
 
 
 # project
-from log_laplace.utils import (
+from .utils import (
     LogHelper, StreamToLogger, 
     get_logger_instance, set_logger_instance
 )
