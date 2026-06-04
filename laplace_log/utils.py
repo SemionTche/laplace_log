@@ -29,8 +29,10 @@ def log_func(msg, level="info"):
     '''Log function used to make logs in app logger.'''
     global _logger_instance
     if _logger_instance is None:
-        raise RuntimeError("Logger not initialized! Call LoggerLHC(app_name, ...) first.")
-    
+        # raise RuntimeError("Logger not initialized! Call LoggerLHC(app_name, ...) first.")
+        print(msg)
+        return
+
     level = level.lower()
     if level == "debug":
         _logger_instance.debug(msg)
