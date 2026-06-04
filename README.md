@@ -25,6 +25,7 @@ No magic, no external dependencies — just structured, predictable logging.
 - ✅ Simple `log.info(...)` helper available everywhere
 - ✅ Singleton design (initialize once, use everywhere)
 - ✅ Provide an error hook (to avoid silent failures such as PyQt signals)
+- ✅ If the logger is not set, the `log.example(...)` will act as a `print(...)`
 
 ---
 
