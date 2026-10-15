@@ -81,6 +81,7 @@ class LoggerLHC:
         self.capture_prints()
 
         set_logger_instance(self)  # the instance is initialized
+        log.debug(f"The folder is available at: '{self.log_root}'")
 
 
     def setup_handlers(self, file_level: str, console_level: str):
