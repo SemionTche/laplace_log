@@ -8,14 +8,17 @@ version = "0.1.4"
 description = "Unified logging utilities for Laplace applications"
 readme = "README.md"
 requires-python = ">=3.10"
+
 license = "GPL-3.0-only"
 license-files = ["LICENSE"]
+
 authors = [
   { name = "SemionTche" }
 ]
 dependencies = []
 
 keywords = ["logging", "laplace", "utilities"]
+
 classifiers = [
     "Development Status :: 3 - Alpha",
     "Intended Audience :: Developers",
