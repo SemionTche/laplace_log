@@ -1,5 +1,5 @@
 '''
-laplace_log – unified logging utilities for Laplace applications.
+laplace_log: unified logging utilities for Laplace-LHC applications.
 '''
 # libraries
 from importlib.metadata import version, PackageNotFoundError
@@ -13,4 +13,8 @@ except PackageNotFoundError:
     __version__ = "0.0.0"
 
 
-__all__ = ["LoggerLHC", "log", "__version__"]
+__all__ = [
+    "LoggerLHC", 
+    "log", 
+    "__version__",
+]

@@ -11,29 +11,30 @@ This module is not intended to be used directly by applications.
 # libraries
 import sys
 
-
 # singleton instance (app logger)
 _logger_instance = None
 
+
 def set_logger_instance(logger):
-    '''set the app logger'''
+    '''Set the app logger.'''
     global _logger_instance
     _logger_instance = logger
 
 def get_logger_instance():
-    '''get the app logger'''
+    '''Get the app logger.'''
     return _logger_instance
 
 
 def log_func(msg, level="info"):
     '''Log function used to make logs in app logger.'''
+    
     global _logger_instance
-    if _logger_instance is None:
-        # raise RuntimeError("Logger not initialized! Call LoggerLHC(app_name, ...) first.")
-        print(msg)
+
+    if _logger_instance is None:    # if the instance is not initialized
+        print(msg)                  # transform the log in print
         return
 
-    level = level.lower()
+    level = level.lower()                # use the relevant level for the msg
     if level == "debug":
         _logger_instance.debug(msg)
     elif level == "warning":
@@ -53,8 +54,10 @@ class LogHelper:
 
 
 class StreamToLogger:
-    '''Helper class redirecting the Python stream (prints) to the 'logger' gave in argument.'''
-    
+    '''
+    Helper class redirecting the Python stream (`prints`) 
+    to the `logger` gave in argument.
+    '''
     def __init__(self, logger, stream=None):
         self.logger = logger
         self.stream = stream or sys.__stdout__  # original stdout/stderr
@@ -69,7 +72,7 @@ class StreamToLogger:
             self.stream.write(message + "\n")
             self.stream.flush()
         
-        # add the print the logger logs
+        # add the print to the logger logs
         self.logger.info(message)
     
     def flush(self):

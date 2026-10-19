@@ -11,48 +11,47 @@ Typical usage:
     from laplace_log import LoggerLHC, log
 
     LoggerLHC("laplace.opt")
-    log.info("Application started")
+    log.info("Application started.")
 '''
-
 # libraries
-import logging
 from pathlib import Path
 from datetime import date
+import logging
 import sys
-
 
 # project
 from .utils import (
     LogHelper, StreamToLogger, 
     get_logger_instance, set_logger_instance
 )
-log = LogHelper()  # helper class to import in order to make logs easely
+log = LogHelper()  # helper class to import in order to make logs easily
 
 
 class LoggerLHC:
-    '''Logger class to handle logs for Laplace apps.'''
+    '''Logger class to handle logs for Laplace-LHC apps.'''
 
     def __init__(self, 
                  app_name: str,
                  log_root: Path | str | None = None,
-                 file_level: str = "debug",   # which level to save
+                 file_level: str = "debug",
                  console_level: str = "info"):
         '''
-            Args:
-                app_name: (str)
-                    The name of the application handling the logs.
-                
-                log_root: (Path | str | None)
-                    the folder path where the logs should be saved. (default None)
-                    Creates a 'logs' folder inside which a 'yyyy-mm-dd' folder will 
-                    contain the 'app_name.log' file.
-                
-                file_level: (str)
-                    The logging level that should be use to save logs in file.
-                
-                console_level: (str)
-                    The logging level that should be use to print the logs in
-                    the console. The 'print' are appearing as 'root' logs.
+        Args:
+            app_name (str):
+                The name of the application handling the logs.
+            
+            log_root (Path | str | None):
+                The folder path where the logs should be saved. (default None)
+
+                Creates a `logs` folder inside which a `yyyy-mm-dd` folder will 
+                contain the `app_name.log` file.
+            
+            file_level (str):
+                The logging level that should be used to save logs in file.
+            
+            console_level (str):
+                The logging level that should be used to print the logs in
+                the console. The `print` are appearing as `root` logs.
         '''
         if get_logger_instance() is not None:
             return      # already initialized
@@ -75,7 +74,10 @@ class LoggerLHC:
         self.logger = logging.getLogger(f"{app_name}")
 
         # Set up handlers (file and console) for root
-        self.setup_handlers(file_level, console_level)
+        self.setup_handlers(
+            file_level=file_level, 
+            console_level=console_level
+        )
 
         # Redirect Python prints to console handler
         self.capture_prints()
@@ -90,16 +92,20 @@ class LoggerLHC:
         fmt = logging.Formatter("%(asctime)s [%(levelname)s] [%(name)s] %(message)s", "%Y-%m-%d %H:%M:%S")
 
         # File handler
-        fh = logging.FileHandler(self.log_file, mode='a', encoding='utf-8')  # saving the logs in the file
+        fh = logging.FileHandler(                                            # saving the logs in the file
+            filename=self.log_file, 
+            mode='a', 
+            encoding='utf-8'
+        )  
         fh.setLevel(getattr(logging, file_level.upper(), logging.DEBUG))     # set the log level
         fh.setFormatter(fmt)                                                 # set the format
-        self.root_logger.addHandler(fh)                                      # give the handler to root
+        self.root_logger.addHandler(fh)                                      # add the handler to root
 
         # Console handler
         ch = logging.StreamHandler(sys.stdout)                               # print logs in the console
         ch.setLevel(getattr(logging, console_level.upper(), logging.INFO))   # set the log level
         ch.setFormatter(fmt)                                                 # set the format
-        self.root_logger.addHandler(ch)                                      # give the handler to root
+        self.root_logger.addHandler(ch)                                      # add the handler to root
 
 
     def capture_prints(self):
