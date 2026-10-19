@@ -4,8 +4,8 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "laplace-log"
-version = "0.1.4"
-description = "Unified logging utilities for Laplace applications"
+version = "0.1.5"
+description = "Unified logging utilities for Laplace-LHC applications"
 readme = "README.md"
 requires-python = ">=3.10"
 
@@ -13,11 +13,20 @@ license = "GPL-3.0-only"
 license-files = ["LICENSE"]
 
 authors = [
-  { name = "SemionTche" }
+  { name = "SemionTche" },
 ]
+
+maintainers = [
+    { name = "LOA-Appli" }
+]
+
 dependencies = []
 
-keywords = ["logging", "laplace", "utilities"]
+keywords = [
+  "logging", "laplace", "utilities",
+  "prints", "saving prints", 
+  "save messages", "messages",
+]
 
 classifiers = [
     "Development Status :: 3 - Alpha",
