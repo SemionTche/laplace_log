@@ -1,4 +1,4 @@
-# laplace_log
+# LAPLACE Log (LAPLACE-LHC)
 
 A **small, opinionated logging helper** built on top of Python’s standard `logging` module.
 
@@ -11,7 +11,7 @@ A **small, opinionated logging helper** built on top of Python’s standard `log
 - Simple `log.info(...)` usage everywhere
 - `print()` statements captured into logs
 
-No magic, no external dependencies — just structured, predictable logging.
+No external dependencies — just structured, predictable logging.
 
 ---
 
@@ -22,7 +22,7 @@ No magic, no external dependencies — just structured, predictable logging.
 - ✅ File + console handlers with independent levels
 - ✅ Automatic folder structure: `logs/YYYY-MM-DD/app_name.log`
 - ✅ `print()` and `stderr` redirection into logs
-- ✅ Simple `log.info(...)` helper available everywhere
+- ✅ Simple `log.info(...)` helper available
 - ✅ Singleton design (initialize once, use everywhere)
 - ✅ Provide an error hook (to avoid silent failures such as PyQt signals)
 - ✅ If the logger is not set, the `log.example(...)` will act as a `print(...)`
@@ -48,6 +48,7 @@ from laplace_log import LoggerLHC, log
 
 LoggerLHC(
     app_name="laplace.opt",
+    log_root=None,
     file_level="debug",
     console_level="info",
 )
@@ -131,13 +132,7 @@ log.info("Hello")
 
 Internally, it forwards calls to the initialized `LoggerLHC` instance.
 
-If logging is used **before initialization**, an explicit error is raised:
-
-```text
-RuntimeError: Logger not initialized! Call LoggerLHC(app_name, ...) first.
-```
-
-This avoids silent failures.
+If log is used **before initialization** of `LoggerLHC`, the message is printed.
 
 ---
 
@@ -190,7 +185,7 @@ LoggerLHC(
 
 ## Intended Use Cases
 
-- Scientific applications (optimization, simulations)
+- Scientific applications (optimization, simulations, experiments)
 - Multi‑process systems (master / worker / optimizer)
 - GUI + backend projects
 - Long‑running experiments
