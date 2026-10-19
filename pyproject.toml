@@ -39,9 +39,9 @@ classifiers = [
 
 
 [project.urls]
-Homepage = "https://github.com/SemionTche/laplace_log"
-Repository = "https://github.com/SemionTche/laplace_log"
-Issues = "https://github.com/SemionTche/laplace_log/issues"
+Homepage = "https://github.com/LOA-APPLI/laplace_log"
+Repository = "https://github.com/LOA-APPLI/laplace_log"
+Issues = "https://github.com/LOA-APPLI/laplace_log/issues"
 
 
 [tool.setuptools]
